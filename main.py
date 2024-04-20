@@ -4,7 +4,7 @@ from tkinter import messagebox
 root = Tk()
 root.title("SIMPLE STAND ALONE SOLAR POWER SYSTEM CALCULATOR")
 
-root.geometry("565x490+0+0")
+root.geometry("565x550+0+0")
 root.resizable(0,0)
 
 #FUNCTIONS
@@ -31,7 +31,7 @@ def calculator():
 
                 #For Lithium-ion
                 item1 = int(e_totalLoad.get())
-                item2 = int(e_numberOfHours.get())
+                item2 = int(eval(e_numberOfHours.get()))
 
                 sizeOfInverter = int((item1 + (0.3*item1)))
 
@@ -116,8 +116,6 @@ emptyLabelTwo.grid(row=6, column=0, sticky=W)
 emptyLabelThree  = Label(inputFrame, text=" ",  font = ('arial',18,'bold'))
 emptyLabelThree.grid(row=10, column=0, sticky=W)
 
-emptyLabelFour  = Label(inputFrame, text=" ",  font = ('arial',18,'bold'))
-emptyLabelFour.grid(row=11, column=0, sticky=W)
 
 #INPUT FRAME entry field
 textTotalLoad = Entry(inputFrame, font=('arial', 11, 'bold'), bd=5, width=19, textvariable=e_totalLoad)
@@ -151,6 +149,19 @@ calculateButton = Button(inputFrame, text='CALCULATE', font=('arial', 11, 'bold'
 calculateButton.grid(row=5, column=0)
 
 clearButton = Button(inputFrame, text='CLEAR', font=('arial', 11, 'bold'), bd= 3, command = clear)
-clearButton.grid(row=12, column=0)
+clearButton.grid(row=11, column=0)
+
+#NOTIFICATIONS
+noteLabelOne = Label(inputFrame, text=" ",  font = ('arial',10,'bold'), width=24)
+noteLabelOne.grid(row=13, column=0, sticky= W )
+
+noteLabelTwo = Label(inputFrame, text=" ",  font = ('arial',10,'bold'), width=24)
+noteLabelTwo.grid(row=14, column=0, sticky= W )
+
+sunHoursLabel = Label(inputFrame, text="Note: Number of sun hours estimated is 7hrs ",  font = ('arial',10,'bold'), width=35)
+sunHoursLabel.grid(row=15, column=0, sticky= W )
+
+inverterEfficiency = Label(inputFrame, text="Note: Efficiency of inverter has to be not less than 85%  ",  font = ('arial',10,'bold'), width=43)
+inverterEfficiency.grid(row=16, column=0, sticky= W )
 
 root.mainloop()
